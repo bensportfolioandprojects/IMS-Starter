@@ -48,4 +48,17 @@ public class ItemController implements CrudController<Item> {
 		Long id = utils.getLong();
 		return itemDAO.delete(id);
 	}
+
+	@Override
+	public Item update() {
+		LOGGER.info("Please enter the id of the item you would like to update");
+		Long itemID = utils.getLong();
+		LOGGER.info("Please enter the item's name");
+		String itemName = utils.getString();
+		LOGGER.info("Please enter the item's price");
+		Double itemPrice = utils.getDouble();
+		Item item = itemDAO.update(new Item(itemID, itemName, itemPrice));
+		LOGGER.info("Item updated");
+		return item;
+	}
 }

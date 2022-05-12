@@ -3,13 +3,14 @@ package com.qa.ims.persistence.dao;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
+import com.qa.ims.persistence.domain.Item;
+import com.qa.ims.persistence.domain.Order;
 import com.qa.ims.utils.DBUtils;
-import com.sun.tools.javac.util.List;
 
 public class OrderDAOTest {
 	
@@ -23,26 +24,37 @@ public class OrderDAOTest {
 	
 	@Test
 	public void testCreate() {
-		final Order created = new Order(2L, "bird_table", 40.00, 2);
+		final Order created = new Order(2L, 1L);
 		assertEquals(created, DAO.create(created));
 	}
 	
 	@Test
 	public void testReadAll() {
 		List<Order> expected = new ArrayList<>();
-		expected.add(new Order(1L, "plant_pot", 20.00, 1));
+		expected.add(new Order(1L));
 		assertEquals(expected, DAO.readAll());
 	}
 	
 	@Test
 	public void testReadLatest() {
-		assertEquals(new Order(1L, "plant_pot", 20.00), DAO.readLatest());
+		assertEquals(new Order(1L, 2L), DAO.readLatest());
 	}
 	
 	@Test
 	public void testRead() {
 		final long OrderID = 1L;
-		assertEquals(newOrder(OrderID, "plant_pot", 20.00))
+		assertEquals(new Order(1L), DAO.read(OrderID));
+	}
+	
+	@Test
+	public void testUpdate() {
+		final Order updated = new Order(1L);
+		assertEquals(updated, DAO.update(updated));
+	}
+	
+	@Test
+	public void testDelete() {
+		assertEquals(1, DAO.delete(1));
 	}
 
 }

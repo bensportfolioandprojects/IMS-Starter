@@ -5,11 +5,11 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
 import com.qa.ims.persistence.dao.OrderDAO;
+import com.qa.ims.persistence.domain.Order;
 import com.qa.ims.utils.Utils;
 
-public class OrderController implements CrudControler<Order> {
+public class OrderController implements CrudController<Order> {
 	
 	public static final Logger LOGGER = LogManager.getLogger();
 	
@@ -35,11 +35,7 @@ public class OrderController implements CrudControler<Order> {
 	public Order create() {
 		LOGGER.info("Please enter the customer id");
 		Long customerID = utils.getLong();
-		LOGGER.info("Please enter the order items");
-		List<Items> orderItems = utils.getList();
-		LOGGER.info("Please enter the total price");
-		Double totalPrice = utils.getDouble();
-		Order order = orderDAO.create(new Order(orderItems, totalPrice, customerID));
+		Order order = orderDAO.create(new Order(customerID));
 		LOGGER.info("Order created");
 		return order;
 	}
@@ -48,11 +44,7 @@ public class OrderController implements CrudControler<Order> {
 	public Order update() {
 		LOGGER.info("Please enter the order id");
 		Long orderID = utils.getLong();
-		LOGGER.info("Please enter the order items");
-		List<Items> orderItems = utils.getList();
-		LOGGER.info("Please enter the total price");
-		Double totalPrice = utils.getDouble();
-		Order order = orderDAO.update(new Order(orderItems, totalPrice, customerID));
+		Order order = orderDAO.update(new Order(orderID));
 		LOGGER.info("Order updated");
 		return order;
 	}

@@ -1,5 +1,6 @@
 package com.qa.ims.utils;
 
+import java.util.List;
 import java.util.Scanner;
 
 import org.apache.logging.log4j.LogManager;
@@ -50,6 +51,16 @@ public class Utils {
 			}
 		} while (doubleInput == null);
 		return doubleInput;
+	}
+
+	public <Item> List<Item> getList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void create(com.qa.ims.persistence.domain.Item created) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

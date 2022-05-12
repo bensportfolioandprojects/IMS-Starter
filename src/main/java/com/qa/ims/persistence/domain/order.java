@@ -1,70 +1,69 @@
 package com.qa.ims.persistence.domain;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Order {
 	
-	private Long orderID;
+	private Long id;
 	private List<Item> orderItems;
-	private Double totalPrice;
 	private Long customerID;
 	
-	public Order(List<Item> orderItems, Double totalPrice, Long customerID) {
-		this.setOrderItems(orderItems);
-		this.setTotalPrice(totalPrice);
-		this.setCustomerID(customerID);
-	}
 	
-	public Order(Long orderID, List<Item> orderItems, Double totalPrice, Long customerID) {
-		this.setOrderID(orderID);
-		this.setOrderItems(orderItems);
-		this.setTotalPrice(totalPrice);
-		this.setCustomerID(customerID);
-	}
-	
-	public Long getOrderID() {
-		return orderID;
-	}
-	
-	public void setOrderID(Long orderID) {
-		this.orderID = orderID;
-	}
-	
-	public List<Item> getOrderItems() {
-		return orderItems;
-	}
-	
-	public void setOrderItems(List<Item> orderItems) {
+
+	public Order(Long id, List<Item> orderItems, Long customerID) {
+		super();
+		this.id = id;
 		this.orderItems = orderItems;
+		this.customerID = customerID;
 	}
-	
-	public Double getTotalPrice() {
-		return totalPrice;
-	}
-	
-	public void setTotalPrice(Double totalPrice) {
-		this.totalPrice = totalPrice;
-	}
-	
-	public Long getCustomerID() {
-		return customerID;
-	}
-	
-	public void setCustomerID(Long customerID) {
+
+	public Order(Long customerID) {
+		super();
 		this.customerID = customerID;
 	}
 	
+	public Order(List<Item> orderItems, Long customerID) {
+		super();
+		this.orderItems = orderItems;
+		this.customerID = customerID;
+	}
+
+	public Order(Long id, Long customerID) {
+		super();
+		this.id = id;
+		this.customerID = customerID;
+	}
+
+	public Long getID() {
+		return id;
+	}
+
+	public void setID(Long id) {
+		this.id = id;
+	}
+
+	public List<Item> getOrderItems() {
+		return orderItems;
+	}
+
+	public void setOrderItems(List<Item> orderItems) {
+		this.orderItems = orderItems;
+	}
+
+	public Long getCustomerID() {
+		return customerID;
+	}
+
+	public void setCustomerID(Long customerID) {
+		this.customerID = customerID;
+	}
+
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((orderItems == null) ? 0 : orderItems.hashCode());
-		result = prime * result + ((orderID == null) ? 0 : orderID.hashCode());
-		result = prime * result + ((totalPrice == null) ? 0 : totalPrice.hashCode());
-		result = prime * result + ((customerID == null) ? 0 : customerID.hashCode());
-		return result;
+		return Objects.hash(customerID, id, orderItems);
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -74,28 +73,16 @@ public class Order {
 		if (getClass() != obj.getClass())
 			return false;
 		Order other = (Order) obj;
-		if (getOrderID() == null) {
-			if (other.getOrderID() != null)
-				return false;
-		} else if (!getOrderID().equals(other.getOrderID()))
-			return false;
-		if (orderItems == null) {
-			if (other.orderItems != null)
-				return false;
-		} else if (!orderItems.equals(other.orderItems))
-			return false;
-		if (totalPrice == null) {
-			if (other.totalPrice != null)
-				return false;
-		} else if (!totalPrice.equals(other.totalPrice)) {
-			return false;
-		} {
-		if (customerID == null) {
-			if (other.customerID != null)
-				return false;
-		} else if (!customerID.equals(other.customerID)) 
-			return false;
-		return true;
+		return Objects.equals(customerID, other.customerID) && Objects.equals(id, other.id)
+				&& Objects.equals(orderItems, other.orderItems);
 	}
+
+	@Override
+	public String toString() {
+		return "Order [orderID=" + id + ", orderItems=" + orderItems + ", customerID=" + customerID + "]";
 	}
+	
+	
+	
+	
 	}

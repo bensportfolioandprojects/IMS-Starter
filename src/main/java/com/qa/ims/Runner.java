@@ -1,4 +1,4 @@
-customerpackage com.qa.ims;
+package com.qa.ims;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

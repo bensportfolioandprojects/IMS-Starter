@@ -67,7 +67,7 @@ public class Item {
 			return false;
 		Item other = (Item) obj;
 		if (getItemName() == null) {
-			if (other.id != null)
+			if (other.getItemName() != null)
 				return false;
 		} else if (!getItemName().equals(other.getItemName()))
 			return false;

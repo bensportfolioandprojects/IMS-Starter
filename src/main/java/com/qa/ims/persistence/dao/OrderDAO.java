@@ -27,7 +27,7 @@ public class OrderDAO implements Dao<Order> {
 		Long customerID = resultSet.getLong("customerID");
 		return new Order(id, orderItems, customerID);
 	}
-
+	
 
 	public List<Item> readItems(Long id) {
 		// TODO Auto-generated method stub

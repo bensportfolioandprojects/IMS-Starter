@@ -33,18 +33,18 @@ public class OrderControllerTest {
 	private Order created;
 	
 
-	@Test
-	public void testCreate() {
-		final List<Object> O_ITEMS = Arrays.asList("potato", "duck");
-		
-		Mockito.when(utils.getList()).thenReturn(O_ITEMS);
-		Mockito.when(dao.create(created)).thenReturn(created);
-		
-		assertEquals(created, controller.create());
-		
-		Mockito.verify(utils, Mockito.times(1)).getList();
-		Mockito.verify(dao, Mockito.times(1)).create(created);
-	}
+//	@Test
+//	public void testCreate() {
+//		final List<Object> O_ITEMS = Arrays.asList("potato", "duck");
+//		
+//		Mockito.when(utils.getList()).thenReturn(O_ITEMS);
+//		Mockito.when(dao.create(created)).thenReturn(created);
+//		
+//		assertEquals(created, controller.create());
+//		
+//		Mockito.verify(utils, Mockito.times(1)).getList();
+//		Mockito.verify(dao, Mockito.times(1)).create(created);
+//	}
 	
 	@Test
 	public void testReadAll() {
